@@ -8,24 +8,29 @@ using System.Threading.Tasks;
 
 namespace CarRentalManagement.Server.Configurations.Entities
 {
-    public class CustomerSeedConfiguration : IEntityTypeConfiguration<Customer>
+    public class ColourSeedConfiguration : IEntityTypeConfiguration<Colour>
     {
-        public void Configure(EntityTypeBuilder<Customer> builder)
+        public void Configure(EntityTypeBuilder<Colour> builder)
         {
             builder.HasData(
-                new Customer
+                new Colour
                 {
                     Id = 1,
-                    DrivingLicense = "",
-                    Address = "",
-                    EmailAddress = "",
-                    ContactNumber = "",
+                    Name = "Black",
+                    DateCreated = DateTime.Now,
+                    DateUpdated = DateTime.Now,
+                    CreatedBy = "System",
+                    UpdatedBy = "System"
+                },
+                new Colour
+                {
+                    Id = 2,
+                    Name = "Blue",
                     DateCreated = DateTime.Now,
                     DateUpdated = DateTime.Now,
                     CreatedBy = "System",
                     UpdatedBy = "System"
                 }
-                
             );
         }
     }
