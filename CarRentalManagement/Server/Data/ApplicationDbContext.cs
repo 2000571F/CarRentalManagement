@@ -34,6 +34,7 @@ namespace CarRentalManagement.Server.Data
             builder.ApplyConfiguration(new ColourSeedConfiguration());
             builder.ApplyConfiguration(new MakeSeedConfiguration());
             builder.ApplyConfiguration(new ModelSeedConfiguration());
+            builder.ApplyConfiguration(new CustomerSeedConfiguration());
         }
     }
 }

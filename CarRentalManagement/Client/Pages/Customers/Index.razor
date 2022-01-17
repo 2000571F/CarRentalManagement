@@ -2,8 +2,14 @@
 @inject HttpClient _client
 @inject IJSRuntime js
 @attribute [Authorize]
- 
+
 <h3 class="card-title">Car Customers</h3>
+<a href="/Customers/create" class="btn btn-secondary">
+    <span class="oi oi-plus"></span>
+    Create New Customers
+</a>
+<br />
+<br />
 
 @if (Customers == null)
 {
@@ -21,24 +27,24 @@ else
             </tr>
         </thead>
         <tbody>
-            @foreach (var Customer in Customers) 
-            { 
-            <tr>
-                <td>@Customer.DrivingLicense</td>
-                <td>@Customer.ContactNumber</td>
-                <td>@Customer.EmailAddress</td>
-                <td>
-                    <a href="/Customers/view/@Customer.Id" class="btn btn-primary">
-                        <span class="oi oi-book"></span>
-                    </a>
-                    <a href="/Customers/edit/@Customer.Id" class="btn btn-warning">
-                        <span class="oi oi-pencil"></span>
-                    </a>
-                    <button class="btn btn-danger" @onclick="@(()=>Delete(Customer.Id))">
-                        <span class="oi oi-delete"></span>
-                    </button>
-                </td>
-            </tr>
+            @foreach (var Customer in Customers)
+            {
+                <tr>
+                    <td>@Customer.DrivingLicense</td>
+                    <td>@Customer.ContactNumber</td>
+                    <td>@Customer.EmailAddress</td>
+                    <td>
+                        <a href="/Customers/view/@Customer.Id" class="btn btn-primary">
+                            <span class="oi oi-book"></span>
+                        </a>
+                        <a href="/Customers/edit/@Customer.Id" class="btn btn-warning">
+                            <span class="oi oi-pencil"></span>
+                        </a>
+                        <button class="btn btn-danger" @onclick="@(()=>Delete(Customer.Id))">
+                            <span class="oi oi-delete"></span>
+                        </button>
+                    </td>
+                </tr>
             }
         </tbody>
     </table>
@@ -54,7 +60,7 @@ else
     async Task Delete(int CustomerId)
     {
         var Customer = Customers.First(q => q.Id == CustomerId);
-        var confirm = await js.InvokeAsync<bool>("confirm",$"Do you want to delete {Customer.DrivingLicense}?");
+        var confirm = await js.InvokeAsync<bool>("confirm", $"Do you want to delete {Customer.DrivingLicense}?");
         if (confirm)
         {
             await _client.DeleteAsync($"{Endpoints.CustomersEndpoint}/{CustomerId}");
