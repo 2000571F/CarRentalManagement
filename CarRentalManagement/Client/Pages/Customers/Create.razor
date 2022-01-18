@@ -1,4 +1,4 @@
-﻿@page  "/Customers/create/"
+﻿@page  "/customers/create/"
 @inject HttpClient _client
 @inject NavigationManager _navManager
 <h3 class="card-title">Create New Customers</h3>
@@ -59,16 +59,10 @@
 @code {
     Customer Customer = new Customer();
 
-    private IList<Make> Makes;
-    private IList<Model> Models;
-    private IList<Colour> Colours;
-    private IList<Customer> Customers;
+    private List<Customer> Customers;
 
     protected async override Task OnInitializedAsync()
     {
-        Makes = await _client.GetFromJsonAsync<List<Make>>($"{Endpoints.MakesEndpoint}");
-        Models = await _client.GetFromJsonAsync<List<Model>>($"{Endpoints.ModelsEndpoint}");
-        Colours = await _client.GetFromJsonAsync<List<Colour>>($"{Endpoints.ColoursEndpoint}");
         Customers = await _client.GetFromJsonAsync<List<Customer>>($"{Endpoints.CustomersEndpoint}");
     }
     private async Task CreateCustomer()
