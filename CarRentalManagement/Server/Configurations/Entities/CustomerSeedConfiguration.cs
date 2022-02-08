@@ -21,7 +21,7 @@ namespace CarRentalManagement.Server.Configurations.Entities
                     DrivingLicense = "WSUHIJUF365JK",
                     Address = "Real St 69 BLK 420",
                     EmailAddress = "JohnC@RealMail.com",
-                    ContactNumber = "83748763",
+                    ContactNumber = 83798656,
                     DateCreated = DateTime.Now,
                     DateUpdated = DateTime.Now,
                     CreatedBy = "System",
